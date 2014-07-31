@@ -1,0 +1,6 @@
+target
+bin
+build
+*.class
+.DS_Store
+WebContent/WEB-INF/classes

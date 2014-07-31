@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+body {
+	padding-top: 20px; 
+}
+
+.btn {
+	margin-bottom: 20px;
+}
+
+table a:HOVER {
+	text-decoration: none;
+}
+
+table a.btn-lg {
+	padding: 0;
+}
