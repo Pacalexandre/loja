@@ -44,6 +44,9 @@ public class LoginController {
 		session.desautentica();
 		result.redirectTo(this).login();
 	}
+	
+	public void denied() {
+	}
 
 	private void validaUsuarioCadastrado(final Usuario usuario) {
 		validator.check(usuario != null, new SimpleMessage("error", "Dados incorretos!", (Object[]) null));

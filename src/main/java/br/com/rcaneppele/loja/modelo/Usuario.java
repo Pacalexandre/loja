@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Usuario implements Serializable {
@@ -16,6 +17,13 @@ public class Usuario implements Serializable {
 	private Long id;
 	private String login;
 	private String senha;
+	
+	@ManyToOne(optional = false)
+	private PerfilDeAcesso perfil;
+	
+	public boolean podeAcessar(Url url) {
+		return this.perfil.getUrlsPermitidas().contains(url);
+	}
 
 	public Long getId() {
 		return id;

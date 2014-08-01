@@ -47,7 +47,7 @@ public class ClientesController {
 	@Get("/clientes/{id}")
 	public void edit(Long id) {
 		result.include("cliente", dao.buscaPorIr(id));
-		result.of(this).form();
+		result.forwardTo(this).form();
 	}
 	
 	@Put("/clientes")

@@ -18,5 +18,5 @@ public class HomeController {
 	public void home() {
 		result.include("mensagem", "BEM VINDO!!!!");
 	}
-	
+
 }

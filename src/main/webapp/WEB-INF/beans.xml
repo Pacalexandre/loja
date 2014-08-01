@@ -9,8 +9,4 @@
 		<exclude name="br.com.rcaneppele.loja.modelo.*"></exclude>
 	</scan>
 	
-	<interceptors>
-		<class>br.com.rcaneppele.loja.infra.security.AutenticacaoInterceptor</class>
-	</interceptors>
-
 </beans>

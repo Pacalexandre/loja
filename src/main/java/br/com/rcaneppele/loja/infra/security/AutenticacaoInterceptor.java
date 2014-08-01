@@ -1,15 +1,16 @@
 package br.com.rcaneppele.loja.infra.security;
 
 import javax.inject.Inject;
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.Interceptor;
-import javax.interceptor.InvocationContext;
 
+import br.com.caelum.vraptor.Accepts;
+import br.com.caelum.vraptor.AroundCall;
+import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.controller.ControllerMethod;
+import br.com.caelum.vraptor.interceptor.SimpleInterceptorStack;
 import br.com.rcaneppele.loja.controller.LoginController;
 
-@Interceptor
-@Security
+@Intercepts(before = AutorizacaoInterceptor.class)
 public class AutenticacaoInterceptor {
 
 	@Inject
@@ -18,13 +19,19 @@ public class AutenticacaoInterceptor {
 	@Inject
 	private UserSession session;
 	
-	@AroundInvoke
-	public Object intercept(InvocationContext ctx) throws Exception {
-		if (!session.isAutenticado()) {
+	@Accepts
+	public boolean accepts(ControllerMethod method) {
+		//so intercepta se o metodo ou o Controller estiver anotado com @Security
+	    return method.containsAnnotation(Security.class) || method.getController().getType().isAnnotationPresent(Security.class);
+	}
+	
+	@AroundCall
+	public void intercepta(SimpleInterceptorStack stack) {
+		if (session.isAutenticado()) {
+			stack.next();
+		} else {
 			result.redirectTo(LoginController.class).login();
 		}
-		
-		return ctx.proceed();
 	}
 	
 }
