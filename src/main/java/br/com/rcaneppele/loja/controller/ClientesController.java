@@ -10,9 +10,11 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.rcaneppele.loja.dao.ClienteDao;
+import br.com.rcaneppele.loja.infra.security.Security;
 import br.com.rcaneppele.loja.modelo.Cliente;
 
 @Controller
+@Security
 public class ClientesController {
 
 	@Inject

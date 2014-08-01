@@ -8,5 +8,9 @@
 			cases. See more details at: http://www.cdi-spec.org/faq/#accordion12 -->
 		<exclude name="br.com.rcaneppele.loja.modelo.*"></exclude>
 	</scan>
+	
+	<interceptors>
+		<class>br.com.rcaneppele.loja.infra.security.AutenticacaoInterceptor</class>
+	</interceptors>
 
 </beans>
